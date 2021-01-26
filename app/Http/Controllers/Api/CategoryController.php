@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
 use App\Http\Requests\StoreUpdateCategoryFormRequest;
 
 class CategoryController extends Controller
@@ -32,9 +32,7 @@ class CategoryController extends Controller
 
     public function update(StoreUpdateCategoryFormRequest $request, $id)
     {
-        $category = $this->category->find($id);
-
-        if(!$category) {
+        if(!$category = $this->category->find($id)) {
             return response()->json(['error' => 'Não Encontrado'], 404);
         }
 
