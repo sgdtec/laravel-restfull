@@ -1,10 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 
-
+/*
 Route::get('categories', [CategoryController::class, 'index']);
 Route::post('categories', [CategoryController::class, 'store']);
 Route::put('categories/{id}', [CategoryController::class, 'update']);
+Route::delete('categories/{id}', [CategoryController::class, 'delete']);
+*/
+
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('products', ProductController::class);
