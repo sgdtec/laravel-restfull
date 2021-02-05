@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Product;
 use Illuminate\Support\Str;
@@ -70,10 +70,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        if (!$product = $this->product->find($id)) {
+        if (!$product = $this->product->with('category')->find($id)) {
             return response()->json(['error' => 'Não encontrado', 404]);
         }
-
+      
         return response()->json($product);
     }
   
